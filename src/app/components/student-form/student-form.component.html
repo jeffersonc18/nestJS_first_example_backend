@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-sm-4 offset-md-4">
+        <div class="card card-body">
+            <form (submit)="submitStudent()">
+                <div class="form-group">
+                    <input type="text" name="code" [(ngModel)]="student.code"
+                    class="form-control" placeholder="Student code" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="name" [(ngModel)]="student.name" 
+                    class="form-control" placeholder="Student name">
+                </div>
+                <div class="form-group">
+                    <input type="text"  name="photoUrl" [(ngModel)]="student.photoUrl"
+                    class="form-control" placeholder="photoUrl">
+                </div>
+                <button class="btn btn-primary btn-block">
+                    save
+                </button>
+            
+            </form>
+        </div>
+    </div>
+
+</div>
