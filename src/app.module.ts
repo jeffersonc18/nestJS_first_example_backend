@@ -14,3 +14,4 @@ import {MongooseModule} from '@nestjs/mongoose';
   providers: [AppService],
 })
 export class AppModule {}
+//mongodb://localhost:27017/school
