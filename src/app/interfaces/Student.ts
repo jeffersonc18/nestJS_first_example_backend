@@ -1,8 +1,9 @@
 export interface Student {
-    id?: string;
+    _id?: string;
     code: number;
     name: string;
-    photoUrl:string;
-    createdAt?: Date;
+    photoURL:string;
+    createAt?: String;
+    __v?:number;
 
 }

@@ -25,7 +25,7 @@ export class StudentService {
   }
 
   getStudent(id:string):Observable<Student>{
-    return this.httpClient.get<Student>(`${this.BASE_URL}/student${id}`);
+    return this.httpClient.get<Student>(`${this.BASE_URL}/student/${id}`);
   }
 
   updateStudent(id:string,student:Student):Observable<Student>{
@@ -33,6 +33,6 @@ export class StudentService {
   }
 
   deleteStudent(id:string):Observable<Student>{
-    return this.httpClient.delete<Student>(`${this.BASE_URL}/student/delete?studenID=${id}`);
+    return this.httpClient.delete<Student>(`${this.BASE_URL}/student/delete?studentID=${id}`);
   }
 }

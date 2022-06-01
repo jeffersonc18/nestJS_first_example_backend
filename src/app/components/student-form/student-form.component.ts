@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Student} from '../../interfaces/Student';
 import { StudentService } from '../../services/student.service';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-student-form',
@@ -9,19 +11,40 @@ import {Router} from '@angular/router';
   styleUrls: ['./student-form.component.css']
 })
 export class StudentFormComponent implements OnInit {
+  
+  
 
   student:Student = {
+
     code:0,
     name:'',
-    photoUrl:''
+    photoURL:''
   };
+
+  edit:boolean = false;
 
   constructor(
     private studentService:StudentService,
-    private router:Router
+    private router:Router,
+    private activatedRoute:ActivatedRoute
     ) { }
 
   ngOnInit(): void {
+    
+    const parametro = this.activatedRoute.snapshot.params['id'];
+    console.log(parametro+typeof(parametro));
+  
+    if(parametro){
+      this.studentService.getStudent(parametro)
+      .subscribe(
+        res => {
+        this.student=res;
+        this.edit=true;
+        }
+      )
+      
+      }
+    
   }
 
   submitStudent(){
@@ -31,8 +54,10 @@ export class StudentFormComponent implements OnInit {
         console.log(res);
         this.router.navigate(['/']);
       },
-      err => console.log(err)
+      err => console.log(err) 
     )
   }
+
+  
 
 }
