@@ -58,6 +58,19 @@ export class StudentFormComponent implements OnInit {
     )
   }
 
+  updateStudent(){
+    delete this.student.createAt;
+    this.studentService.updateStudent(JSON.parse(JSON.stringify(this.student._id)),this.student)
+    .subscribe(
+      res=>{
+        console.log(res);
+        this.router.navigate(['/student'])
+      },
+      err => console.log(err)
+
+    );
+  }
+
   
 
 }
